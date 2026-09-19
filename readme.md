@@ -1,29 +1,45 @@
-# 🗂️ QA: Restore Names - Data Recovery Validation Suite
+# 🧪 QA Portfolio: Data Restoration Algorithm & Unit Testing
 
-> ### A unit testing suite built with **Jest** to validate a data recovery script designed to repair corrupted database records.
+> **About this repository:** This project focuses on the foundation of the Agile Testing Pyramid: **Unit Testing**. It demonstrates how to validate core data-manipulation algorithms (specifically object and property restoration) using automated unit tests, static analysis, and continuous integration.
 
-This repository is a professional showcase of **Software Quality Assurance (QA)** techniques applied to data mutation and state side-effects. It focuses on architecting automated tests for the `restoreNames` function, which recovers lost data fields after a simulated database failure.
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Unit Testing](https://img.shields.io/badge/-Unit_Testing-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![ESLint](https://img.shields.io/badge/-Static_Analysis-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/-CI/CD-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
----
+## 🎯 Project Overview
 
-## 🎯 System Under Test (SUT)
+This repository contains a specialized JavaScript utility function designed to process and restore missing or incomplete dataset attributes (implemented in `src/restoreNames.js`). 
 
-Due to a database failure, some user records have lost their `firstName` values. Fortunately, the integrity of the `fullName` field remained intact. 
+As a **QA Automation Engineer**, my objective in this project is to ensure the algorithmic logic behaves predictably by writing and maintaining comprehensive unit tests (`src/restoreNames.test.js`) that cover standard data structures, edge cases, and potential runtime anomalies directly at the code level.
 
-The `restoreNames` function is a data-patching script that accepts an array of `users` objects. Its purpose is to parse the `fullName` and dynamically restore the `firstName` for any user where the field is either missing or strictly equal to `undefined`[cite: 6].
+## 🛠️ QA Tech Stack & Tools
 
-**Critical Architectural Detail:** The function operates via **Object Mutation**. It does not return a new array; it modifies the input array directly and returns nothing (a `void` function)[cite: 6].
+* **Testing Level:** Unit Testing (White-Box Testing)
+* **CI/CD Pipeline:** GitHub Actions (Automated test execution on every push/PR)
+* **Static Code Analysis (Shift-Left QA):** ESLint
+* **Core Language:** JavaScript (ES6+)
 
-**Example of Expected State Mutation:**
-```javascript
-// Input State
-const users = [
-  { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' }, // undefined field[cite: 6]
-  { lastName: 'Adams', fullName: 'Mike Adams' },                     // missing field entirely[cite: 6]
-];
+## 📊 Test Strategy & Coverage
 
-restoreNames(users); // Function executes (returns nothing)[cite: 6]
+The testing strategy is engineered to isolate and tightly validate the data restoration logic:
 
-// Assert Output State
-// users[0].firstName === 'Jack'[cite: 6]
-// users[1].firstName === 'Mike'[cite: 6]
+### 1. Unit Testing (Code Level Validation)
+Located in `src/restoreNames.test.js`, the automated test suite verifies:
+* Correct processing and attribute restoration for standard object collections.
+* Robust handling of edge cases (e.g., empty datasets, already complete records, malformed structures).
+* Data immutability and expected transformation outcomes.
+
+### 2. Continuous Integration (CI/CD)
+The project is seamlessly integrated with GitHub Actions (`.github/workflows/test.yml`). Every commit automatically triggers a pipeline that:
+* Runs `ESLint` to catch syntax, logic, and style errors early in the development lifecycle.
+* Executes the full unit test suite to prevent regressions from reaching production.
+
+## 🚀 How to Run the Tests Locally
+
+To evaluate the unit tests and static analysis tools on your local machine, follow these steps:
+
+### 1. Environment Setup
+Clone the repository and install the required Node.js dependencies:
+```bash
+npm install
